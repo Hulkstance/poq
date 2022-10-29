@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+	<assembly>
+		<name>Poq.ProductService.Api</name>
+	</assembly>
+	<members>
+		<member name="M:Poq.ProductService.Api.Endpoints.GetProducts">
+			<inheritdoc />
+		</member>
+	</members>
+</doc>
