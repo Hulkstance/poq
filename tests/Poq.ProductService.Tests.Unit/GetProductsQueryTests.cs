@@ -15,7 +15,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    public async Task Handle_ShouldReturnAllProducts_WhenParametersAreNotGiven()
+    public async Task Handle_ReturnsAllProducts_WhenOptionalParametersAreNotGiven()
     {
         // Arrange
         var sut = new GetProductsQuery();
@@ -30,7 +30,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     [Theory]
     [InlineData(10, 14)]
     [InlineData(22, 24)]
-    public async Task Handle_ShouldReturnFilteredSubsetOfProducts_WhenGivenMinPriceAndMaxPrice(double minPrice, double maxPrice)
+    public async Task Handle_ReturnsFilteredSubsetOfProducts_WhenMinPriceAndMaxPriceAreGiven(double minPrice, double maxPrice)
     {
         // Arrange
         var sut = new GetProductsQuery(minPrice, maxPrice);
@@ -49,7 +49,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     [Theory]
     [InlineData("small")]
     [InlineData("medium", "large")]
-    public async Task Handle_ShouldReturnFilteredSubsetOfProducts_WhenGivenSize(params string[] sizes)
+    public async Task Handle_ReturnsFilteredSubsetOfProducts_WhenSizeIsGiven(params string[] sizes)
     {
         // Arrange
         var sut = new GetProductsQuery(Size: sizes);
@@ -66,7 +66,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    public async Task Handle_ShouldThrow_WhenGivenNegativeMaxPrice()
+    public async Task Handle_ShouldThrow_WhenNegativeMaxPriceIsGiven()
     {
         // Arrange
         const double maxPrice = -5;
@@ -82,7 +82,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    public async Task Handle_ShouldReturnEmptyList_WhenGivenNotExistingSize()
+    public async Task Handle_ReturnsEmptyProductList_WhenNotExistingSizeIsGiven()
     {
         // Arrange
         var sizes = new[] { "not existing size" };
@@ -99,7 +99,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     [Theory]
     [InlineData("blue")]
     [InlineData("red", "blue")]
-    public async Task Handle_ShouldReturnFilteredHighlightedDescriptions_WhenGivenKeywords(params string[] keywords)
+    public async Task Handle_ReturnsFilteredHighlightedDescriptions_WhenKeywordsAreGiven(params string[] keywords)
     {
         // Arrange
         var sut = new GetProductsQuery(Highlight: keywords);
@@ -115,7 +115,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    public async Task Handle_ShouldReturnFilteredHighlightedDescriptions_WhenGivenEmptyInput()
+    public async Task Handle_ReturnsFilteredHighlightedDescriptions_WhenEmptyInputIsGiven()
     {
         // Arrange
         var sut = new GetProductsQuery();
@@ -129,7 +129,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    public async Task Handle_ShouldReturnFilteredHighlightedDescriptions_WhenGivenInvalidInput()
+    public async Task Handle_ReturnsFilteredHighlightedDescriptions_WhenInvalidInputIsGiven()
     {
         // Arrange
         var sut = new GetProductsQuery(Highlight: new [] { "not existing word" });
@@ -143,7 +143,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    public async Task Handle_ShouldReturnMostCommonWords_WhenGivenEmptyInput()
+    public async Task Handle_ReturnsMostCommonWords_WhenEmptyInputIsGiven()
     {
         // Arrange
         var sut = new GetProductsQuery();

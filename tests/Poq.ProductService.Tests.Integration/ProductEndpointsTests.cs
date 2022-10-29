@@ -22,7 +22,7 @@ public class ProductEndpointsTests : IClassFixture<ProductServiceApiFactory>
     }
 
     [Fact]
-    public async Task GetProducts_ShouldReturnStatusOkAndAllProducts_WhenParametersAreNotGiven()
+    public async Task Get_ReturnsAllProducts_WhenOptionalParametersAreNotGiven()
     {
         // Arrange
         _mockyApiServer.SetupProducts();
@@ -38,7 +38,7 @@ public class ProductEndpointsTests : IClassFixture<ProductServiceApiFactory>
     }
 
     [Fact]
-    public async Task GetProducts_ShouldReturnStatusOkAndFilteredSubsetOfProducts_WhenAllParametersAreGiven()
+    public async Task Get_ReturnsFilteredSubsetOfProducts_WhenOptionalParametersAreGiven()
     {
         // Arrange
         const double minPrice = 10;
@@ -69,7 +69,7 @@ public class ProductEndpointsTests : IClassFixture<ProductServiceApiFactory>
     }
 
     [Fact]
-    public async Task GetProducts_ShouldReturnBadRequestAndEmptyProductsList_WhenGivenNegativeMaxPrice()
+    public async Task Get_ReturnsBadRequest_WhenNegativeMaxPriceIsGiven()
     {
         // Arrange
         const double maxPrice = -1;
@@ -88,7 +88,7 @@ public class ProductEndpointsTests : IClassFixture<ProductServiceApiFactory>
     }
 
     [Fact]
-    public async Task GetProducts_ShouldReturnStatusBadRequestAndErrorMessage_WhenGivenNotExistingSize()
+    public async Task Get_ReturnsBadRequest_WhenNotExistingSizeIsGiven()
     {
         // Arrange
         const string size = "not existing size";

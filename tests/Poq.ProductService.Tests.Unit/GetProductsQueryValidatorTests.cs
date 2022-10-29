@@ -16,7 +16,7 @@ public class GetProductsQueryValidatorTests
     [Theory]
     [InlineData("large")]
     [InlineData("small", "medium")]
-    public async Task Validate_ShouldBeValid_WhenGivenValidInput(params string[] sizes)
+    public async Task Validate_ShouldBeValid_WhenValidInputIsGiven(params string[] sizes)
     {
         // Arrange
         var query = new GetProductsQuery(Size: sizes);
@@ -29,7 +29,7 @@ public class GetProductsQueryValidatorTests
     }
 
     [Fact]
-    public async Task Validate_ShouldBeValid_WhenGivenInvalidInput()
+    public async Task Validate_ShouldBeValid_WhenInvalidInputIsGiven()
     {
         // Arrange
         var size = new[] { "not existing size" };
