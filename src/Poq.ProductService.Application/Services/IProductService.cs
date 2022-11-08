@@ -4,5 +4,5 @@ namespace Poq.ProductService.Application.Services;
 
 public interface IProductService
 {
-    Task<GetProductsResponse?> GetAll();
+    Task<GetProductsResponse?> GetProductsAsync();
 }

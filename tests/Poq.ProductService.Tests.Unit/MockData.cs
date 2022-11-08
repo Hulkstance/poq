@@ -307,7 +307,7 @@ public sealed class MockData
 
         var mock = new Mock<IProductService>();
         mock
-            .Setup(x => x.GetAll())
+            .Setup(x => x.GetProductsAsync())
             .ReturnsAsync(productResponse);
 
         return mock;

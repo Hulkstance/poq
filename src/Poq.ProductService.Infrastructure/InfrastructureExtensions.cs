@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Poq.ProductService.Application.Services;
-using Poq.ProductService.Infrastructure.Clients;
 using Poq.ProductService.Infrastructure.Http;
 
 namespace Poq.ProductService.Infrastructure;
@@ -19,13 +18,13 @@ public static class InfrastructureExtensions
         services.AddTransient<LoggingHandler>();
 
         services
-            .AddHttpClient<IMockyClient, MockyClient>(client =>
+            .AddHttpClient("Mocky", client =>
             {
-                client.BaseAddress = new Uri(configuration.GetValue<string>("Endpoints:MockyUrl"));
+                client.BaseAddress = new Uri("http://www.mocky.io");
             })
-            // .AddPolicyHandler(Policies.TransientErrorFor<IMockyClient>)
-            // .AddPolicyHandler(Policies.CircuitBreakerFor<IMockyClient>)
-            .AddPolicyHandler(Policies.TimeoutFor<IMockyClient>())
+            // .AddPolicyHandler(Policies.TransientErrorFor<IProductService>)
+            // .AddPolicyHandler(Policies.CircuitBreakerFor<IProductService>)
+            .AddPolicyHandler(Policies.TimeoutFor<IProductService>())
             .AddHttpMessageHandler<LoggingHandler>();
 
         return services;

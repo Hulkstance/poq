@@ -18,7 +18,7 @@ public sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Re
         ArgumentNullException.ThrowIfNull(query);
 
         // Fetch data from mocky.io
-        var products = await _productService.GetAll();
+        var products = await _productService.GetProductsAsync();
 
         if (products is null)
         {

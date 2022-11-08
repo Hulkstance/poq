@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Poq.ProductService.Api;
-using Poq.ProductService.Infrastructure.Clients;
 using Xunit;
 
 namespace Poq.ProductService.Tests.Integration;
@@ -22,7 +21,7 @@ public sealed class ProductServiceApiFactory : WebApplicationFactory<IApiMarker>
 
         builder.ConfigureTestServices(services =>
         {
-            services.AddHttpClient<IMockyClient, MockyClient>(client =>
+            services.AddHttpClient("Mocky", client =>
             {
                 client.BaseAddress = new Uri(MockyApiServer.Url);
             });

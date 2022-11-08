@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.OpenApi.Models;
+using Poq.ProductService.Api.Binding;
 
 namespace Poq.ProductService.Api.Configurations;
 
@@ -33,6 +34,9 @@ internal static class ConfigureSwaggerExtension
             // XML documentation
             var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+            // TryParse would show object as a complex type
+            options.MapType<CommaSeparatedQueryParam>(() => new OpenApiSchema { Type = "string" });
         });
 
         return services;

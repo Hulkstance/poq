@@ -35,8 +35,8 @@ public static class ProductEndpoints
     private static async Task<IResult> GetProducts(
         [FromQuery] double? minPrice,
         [FromQuery] double? maxPrice,
-        CommandSeparatedQueryParameter? size,
-        CommandSeparatedQueryParameter? highlight,
+        [FromQuery] CommaSeparatedQueryParam? size,
+        [FromQuery] CommaSeparatedQueryParam? highlight,
         [FromServices] IMediator mediator,
         CancellationToken cancellationToken)
     {
