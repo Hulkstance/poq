@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
 using FluentValidation;
-using Poq.ProductService.Api.Models;
 using Poq.ProductService.Application.Models;
 
 namespace Poq.ProductService.Api.Middlewares;
@@ -49,7 +48,7 @@ internal sealed class ErrorHandlerMiddleware
                 var result = JsonSerializer.Serialize(new ResponseBuilder()
                     .WithMessage(error.Message)
                     .Build());
-                
+
                 await response.WriteAsync(result);
             }
         }
