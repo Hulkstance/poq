@@ -40,7 +40,7 @@ internal sealed class ErrorHandlerMiddleware
             {
                 var result = JsonSerializer.Serialize(new ResponseBuilder()
                     .WithMessage(error.Message)
-                    .Build()); // JsonSerializer.Serialize(new ErrorModel(error.Message));
+                    .Build());
 
                 await response.WriteAsync(result);
             }
@@ -48,7 +48,8 @@ internal sealed class ErrorHandlerMiddleware
             {
                 var result = JsonSerializer.Serialize(new ResponseBuilder()
                     .WithMessage(error.Message)
-                    .Build()); // JsonSerializer.Serialize(new ErrorModel(error.Message));
+                    .Build());
+                
                 await response.WriteAsync(result);
             }
         }
