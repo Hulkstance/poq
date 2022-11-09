@@ -44,6 +44,6 @@ public static class ProductEndpoints
         var response = await mediator.Send(query, cancellationToken);
         return response.Success
             ? Results.Ok(response)
-            : Results.NotFound();
+            : Results.BadRequest();
     }
 }

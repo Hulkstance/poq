@@ -29,9 +29,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCorsPolicy();
-app.UseMiddleware<ErrorHandlerMiddleware>();
+app.UseCorsPolicy();;
 app.UseOutputCache();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapProductEndpoints();
 
