@@ -6,12 +6,7 @@ namespace Poq.ProductService.Application.Tests.Unit;
 
 public class GetProductsQueryValidatorTests
 {
-    private readonly GetProductsQueryValidator _validator;
-
-    public GetProductsQueryValidatorTests()
-    {
-        _validator = new GetProductsQueryValidator();
-    }
+    private readonly GetProductsQueryValidator _sut = new();
 
     [Theory]
     [InlineData("large")]
@@ -22,7 +17,7 @@ public class GetProductsQueryValidatorTests
         var query = new GetProductsQuery(Size: sizes);
 
         // Act
-        var actual = await _validator.ValidateAsync(query);
+        var actual = await _sut.ValidateAsync(query);
 
         // Assert
         actual.IsValid.Should().BeTrue();
@@ -36,7 +31,7 @@ public class GetProductsQueryValidatorTests
         var query = new GetProductsQuery(Size: size);
 
         // Act
-        var actual = await _validator.ValidateAsync(query);
+        var actual = await _sut.ValidateAsync(query);
 
         // Assert
         actual.IsValid.Should().BeFalse();

@@ -5,11 +5,11 @@ using Xunit;
 
 namespace Poq.ProductService.Application.Tests.Unit;
 
-public class GetProductsQueryTests : IClassFixture<SharedFixture>
+public class GetProductsQueryHandlerTests : IClassFixture<SharedFixture>
 {
     private readonly SharedFixture _sharedFixture;
 
-    public GetProductsQueryTests(SharedFixture sharedFixture)
+    public GetProductsQueryHandlerTests(SharedFixture sharedFixture)
     {
         _sharedFixture = sharedFixture;
     }
@@ -18,10 +18,10 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     public async Task Handle_ReturnsAllProducts_WhenOptionalParametersAreNotGiven()
     {
         // Arrange
-        var sut = new GetProductsQuery();
+        var query = new GetProductsQuery();
 
         // Act
-        var actual = await _sharedFixture.QueryHandler.Handle(sut, default);
+        var actual = await _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         actual.Products.Should().NotBeEmpty().And.HaveCount(48);
@@ -33,10 +33,10 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     public async Task Handle_ReturnsFilteredSubsetOfProducts_WhenMinPriceAndMaxPriceAreGiven(double minPrice, double maxPrice)
     {
         // Arrange
-        var sut = new GetProductsQuery(minPrice, maxPrice);
+        var query = new GetProductsQuery(minPrice, maxPrice);
 
         // Act
-        var actual = await _sharedFixture.QueryHandler.Handle(sut, default);
+        var actual = await _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         actual.Products.Should().AllSatisfy(p =>
@@ -52,10 +52,10 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     public async Task Handle_ReturnsFilteredSubsetOfProducts_WhenSizeIsGiven(params string[] sizes)
     {
         // Arrange
-        var sut = new GetProductsQuery(Size: sizes);
+        var query = new GetProductsQuery(Size: sizes);
 
         // Act
-        var actual = await _sharedFixture.QueryHandler.Handle(sut, default);
+        var actual = await _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         actual.Products.Should().AllSatisfy(p =>
@@ -71,10 +71,10 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
         // Arrange
         const double maxPrice = -5;
 
-        var sut = new GetProductsQuery(MaxPrice: maxPrice);
+        var query = new GetProductsQuery(MaxPrice: maxPrice);
 
         // Act
-        var func = () => _sharedFixture.QueryHandler.Handle(sut, default);
+        var func = () => _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         await func.Should().ThrowAsync<ArgumentOutOfRangeException>()
@@ -87,10 +87,10 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
         // Arrange
         var sizes = new[] { "not existing size" };
 
-        var sut = new GetProductsQuery(Size: sizes);
+        var query = new GetProductsQuery(Size: sizes);
 
         // Act
-        var actual = await _sharedFixture.QueryHandler.Handle(sut, default);
+        var actual = await _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         actual.Products.Should().BeEmpty();
@@ -102,10 +102,10 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     public async Task Handle_ReturnsFilteredHighlightedDescriptions_WhenKeywordsAreGiven(params string[] keywords)
     {
         // Arrange
-        var sut = new GetProductsQuery(Highlight: keywords);
+        var query = new GetProductsQuery(Highlight: keywords);
 
         // Act
-        var actual = await _sharedFixture.QueryHandler.Handle(sut, default);
+        var actual = await _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         actual.Products
@@ -118,10 +118,10 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     public async Task Handle_ReturnsFilteredHighlightedDescriptions_WhenEmptyInputIsGiven()
     {
         // Arrange
-        var sut = new GetProductsQuery();
+        var query = new GetProductsQuery();
 
         // Act
-        var actual = await _sharedFixture.QueryHandler.Handle(sut, default);
+        var actual = await _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         actual.Products.Should().AllSatisfy(p =>
@@ -132,10 +132,10 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     public async Task Handle_ReturnsFilteredHighlightedDescriptions_WhenInvalidInputIsGiven()
     {
         // Arrange
-        var sut = new GetProductsQuery(Highlight: new [] { "not existing word" });
+        var query = new GetProductsQuery(Highlight: new [] { "not existing word" });
 
         // Act
-        var actual = await _sharedFixture.QueryHandler.Handle(sut, default);
+        var actual = await _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         actual.Products.Should().AllSatisfy(p =>
@@ -146,7 +146,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
     public async Task Handle_ReturnsMostCommonWords_WhenEmptyInputIsGiven()
     {
         // Arrange
-        var sut = new GetProductsQuery();
+        var query = new GetProductsQuery();
 
         var expected = new[]
         {
@@ -154,7 +154,7 @@ public class GetProductsQueryTests : IClassFixture<SharedFixture>
         };
 
         // Act
-        var actual = await _sharedFixture.QueryHandler.Handle(sut, default);
+        var actual = await _sharedFixture.Sut.Handle(query, default);
 
         // Assert
         actual.CommonWords.Should().BeEquivalentTo(expected);
