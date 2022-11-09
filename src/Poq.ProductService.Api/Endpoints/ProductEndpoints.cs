@@ -11,7 +11,13 @@ public static class ProductEndpoints
     private const string ContentType = "application/json";
     private const string Tag = "Products";
 
-    public static void MapProductEndpoints(this IEndpointRouteBuilder app)
+    public static IServiceCollection AddProductEndpoints(this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        return services;
+    }
+
+    public static void UseProductEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("api/v1/product", GetProducts)
             .WithName("GetProducts")

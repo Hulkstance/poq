@@ -21,6 +21,8 @@ _ = builder.Configuration.GetValue<string>("OutputCacheProvider") == "Redis"
     ? builder.Services.AddRedisOutputCache()
     : builder.Services.AddOutputCache();
 
+builder.Services.AddProductEndpoints();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -34,6 +36,6 @@ app.UseOutputCache();
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
-app.MapProductEndpoints();
+app.UseProductEndpoints();
 
 app.Run();
