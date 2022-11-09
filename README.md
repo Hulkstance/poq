@@ -10,14 +10,10 @@
 
 ## Tech Stack
 
-- .NET Core
+- ASP.NET Core Web API
 - MediatR
 - FluentValidation
-- AutoMapper
 - Swagger
 - Redis
 - Polly
-- xUnit
-- Moq
-- FluentAssertions
-- WireMock.Net
+- xUnit, FluentAssertions, NSubstitute
