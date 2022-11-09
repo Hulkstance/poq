@@ -3,8 +3,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Poq.ProductService.Application.Behaviors;
 
-public sealed class UnhandledExceptionBehavior<TRequest, TResponse>
-    : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+public sealed class UnhandledExceptionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : IRequest<TResponse>
 {
     private readonly ILogger<TRequest> _logger;
 

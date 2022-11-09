@@ -3,7 +3,7 @@ using Poq.ProductService.Application.Models;
 
 namespace Poq.ProductService.Application.Queries.GetProducts;
 
-public record GetProductsQuery(
+public sealed record GetProductsQuery(
     double? MinPrice = default,
     double? MaxPrice = default,
     string[]? Size = default,

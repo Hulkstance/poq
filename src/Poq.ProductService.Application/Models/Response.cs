@@ -5,17 +5,17 @@ public sealed class Response
     /// <summary>
     /// Whether it was successful or not.
     /// </summary>
-    public bool Success { get; set; }
+    public bool Success { get; init; }
 
     /// <summary>
     /// The error message if any.
     /// </summary>
-    public string Message { get; set; } = string.Empty;
+    public string Message { get; init; } = string.Empty;
 
     /// <summary>
     /// The products list.
     /// </summary>
-    public IEnumerable<Product> Products { get; set; } = Enumerable.Empty<Product>();
+    public IEnumerable<Product> Products { get; init; } = Enumerable.Empty<Product>();
 
     /// <summary>
     /// Gets the minimum price in the product list.
@@ -37,7 +37,7 @@ public sealed class Response
     /// <summary>
     /// A list of common words in the product list descriptions, excluding top 5 and taking maximum 10 words.
     /// </summary>
-    public IEnumerable<string> CommonWords { get; set; } = Enumerable.Empty<string>();
+    public IEnumerable<string> CommonWords { get; init; } = Enumerable.Empty<string>();
 
     public static Response Empty => new();
 }

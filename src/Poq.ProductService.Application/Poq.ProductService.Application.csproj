@@ -16,4 +16,8 @@
     <Folder Include="Commands" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Poq.ProductService.Tests.Unit" />
+  </ItemGroup>
+
 </Project>

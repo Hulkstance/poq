@@ -4,8 +4,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Poq.ProductService.Application.Behaviors;
 
-public sealed class PerformanceBehavior<TRequest, TResponse>
-    : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+public sealed class PerformanceBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : IRequest<TResponse>
 {
     private readonly ILogger<TRequest> _logger;
 

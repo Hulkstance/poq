@@ -3,7 +3,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Poq.ProductService.Application.Behaviors;
 
-public sealed class LoggingBehavior<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
+public sealed class LoggingBehavior<TRequest> : IRequestPreProcessor<TRequest>
+    where TRequest : notnull
 {
     private readonly ILogger<TRequest> _logger;
 

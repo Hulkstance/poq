@@ -11,5 +11,5 @@ public sealed class SharedFixture
         QueryHandler = new GetProductsQueryHandler(MockData.GetProducts().Object);
     }
 
-    public GetProductsQueryHandler QueryHandler { get; }
+    internal GetProductsQueryHandler QueryHandler { get; }
 }

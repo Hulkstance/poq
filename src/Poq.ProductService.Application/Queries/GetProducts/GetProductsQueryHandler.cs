@@ -4,7 +4,7 @@ using Poq.ProductService.Application.Services;
 
 namespace Poq.ProductService.Application.Queries.GetProducts;
 
-public sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Response>
+internal sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Response>
 {
     private readonly IProductService _productService;
 
@@ -17,7 +17,6 @@ public sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Re
     {
         ArgumentNullException.ThrowIfNull(query);
 
-        // Fetch data from mocky.io
         var products = await _productService.GetProductsAsync();
 
         if (products is null)
@@ -26,12 +25,12 @@ public sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Re
         }
 
         return new ResponseBuilder()
-                .WithProducts(products.Products)
-                .WithMinPrice(query.MinPrice)
-                .WithMaxPrice(query.MaxPrice)
-                .WithSize(query.Size)
-                .WithHighlight(query.Highlight)
-                .WithSuccess()
-                .Build();
+            .WithSuccess()
+            .WithProducts(products.Products)
+            .WithMinPrice(query.MinPrice)
+            .WithMaxPrice(query.MaxPrice)
+            .WithSize(query.Size)
+            .WithHighlight(query.Highlight)
+            .Build();
     }
 }
