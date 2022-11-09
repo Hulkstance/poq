@@ -7,9 +7,9 @@ namespace Poq.ProductService.Application.Behaviors;
 public sealed class PerformanceBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
-    private readonly ILogger<TRequest> _logger;
+    private readonly ILogger<PerformanceBehavior<TRequest, TResponse>> _logger;
 
-    public PerformanceBehavior(ILogger<TRequest> logger)
+    public PerformanceBehavior(ILogger<PerformanceBehavior<TRequest, TResponse>> logger)
     {
         _logger = logger;
     }
