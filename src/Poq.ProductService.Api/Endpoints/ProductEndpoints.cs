@@ -15,7 +15,7 @@ public static class ProductEndpoints
     {
         app.MapGet("api/v1/product", GetProducts)
             .WithName("GetProducts")
-            .Produces<Response>(200, ContentType).Produces(404)
+            .Produces<Response>(200, ContentType).Produces(400).Produces(404)
             .WithTags(Tag)
             .CacheOutput(x => x
                 .Expire(TimeSpan.FromSeconds(30))
