@@ -1,9 +1,9 @@
 using FluentAssertions;
 using Poq.ProductService.Application.Queries.GetProducts;
-using Poq.ProductService.Tests.Unit.Fixtures;
+using Poq.ProductService.Application.Tests.Unit.Fixtures;
 using Xunit;
 
-namespace Poq.ProductService.Tests.Unit;
+namespace Poq.ProductService.Application.Tests.Unit;
 
 public class GetProductsQueryTests : IClassFixture<SharedFixture>
 {

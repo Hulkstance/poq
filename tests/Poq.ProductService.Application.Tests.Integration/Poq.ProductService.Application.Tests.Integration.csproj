@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>Poq.ProductService.Tests.Integration</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@ using Moq;
 using Poq.ProductService.Application.Models;
 using Poq.ProductService.Application.Services;
 
-namespace Poq.ProductService.Tests.Unit;
+namespace Poq.ProductService.Application.Tests.Unit;
 
 public sealed class MockData
 {

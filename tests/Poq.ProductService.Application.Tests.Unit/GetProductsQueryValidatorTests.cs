@@ -2,7 +2,7 @@
 using Poq.ProductService.Application.Queries.GetProducts;
 using Xunit;
 
-namespace Poq.ProductService.Tests.Unit;
+namespace Poq.ProductService.Application.Tests.Unit;
 
 public class GetProductsQueryValidatorTests
 {

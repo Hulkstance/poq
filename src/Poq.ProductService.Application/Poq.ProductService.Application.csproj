@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Poq.ProductService.Tests.Unit" />
+    <InternalsVisibleTo Include="Poq.ProductService.Application.Tests.Unit" />
   </ItemGroup>
 
 </Project>

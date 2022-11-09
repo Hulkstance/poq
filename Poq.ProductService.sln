@@ -6,13 +6,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B927597B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poq.ProductService.Api", "src\Poq.ProductService.Api\Poq.ProductService.Api.csproj", "{D35E4C8D-F7A1-454B-8B63-C2049F4350CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poq.ProductService.Tests.Unit", "tests\Poq.ProductService.Tests.Unit\Poq.ProductService.Tests.Unit.csproj", "{F8C73406-0793-47E8-AAC8-7C323B2CDF61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poq.ProductService.Application.Tests.Unit", "tests\Poq.ProductService.Application.Tests.Unit\Poq.ProductService.Application.Tests.Unit.csproj", "{F8C73406-0793-47E8-AAC8-7C323B2CDF61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poq.ProductService.Infrastructure", "src\Poq.ProductService.Infrastructure\Poq.ProductService.Infrastructure.csproj", "{09FAA950-B163-4EE8-94F4-145ED12438E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poq.ProductService.Application", "src\Poq.ProductService.Application\Poq.ProductService.Application.csproj", "{18BDA06E-248E-49A7-BAF8-F1F1298C1734}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poq.ProductService.Tests.Integration", "tests\Poq.ProductService.Tests.Integration\Poq.ProductService.Tests.Integration.csproj", "{BAA357F7-648F-4306-A304-6BD766E069C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poq.ProductService.Application.Tests.Integration", "tests\Poq.ProductService.Application.Tests.Integration\Poq.ProductService.Application.Tests.Integration.csproj", "{BAA357F7-648F-4306-A304-6BD766E069C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
